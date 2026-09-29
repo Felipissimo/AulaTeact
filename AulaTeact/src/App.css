@@ -1,0 +1,198 @@
+/* Reset básico e centralização */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Fundos Dinâmicos com Tons Profundos de Azul e Roxo */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.8s ease;
+}
+
+.app-container.default {
+  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%); /* Azul escuro profundo / Roxo meia-noite */
+}
+
+.app-container.sunny {
+  background: linear-gradient(135deg, #1e1b4b 100%, #31103f 100%); /* Roxo noturno com toque quente */
+}
+
+.app-container.rainy {
+  background: linear-gradient(135deg, #0f172a 0%, #0369a1 100%); /* Azul oceânico profundo */
+}
+
+.app-container.cloudy {
+  background: linear-gradient(135deg, #18181b 0%, #27272a 100%); /* Cinza escuro elegante */
+}
+
+/* O Card Minimalista (Efeito Glassmorphism Sofisticado) */
+.weather-card {
+  background: rgba(255, 255, 255, 0.05); /* Fundo translúcido */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 36px;
+  border-radius: 32px;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #f8fafc; /* Texto claro para contraste */
+}
+
+/* Barra de Pesquisa */
+.search-box {
+  display: flex;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 10px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  margin-bottom: 28px;
+  transition: border-color 0.3s;
+}
+
+.search-box:focus-within {
+  border-color: rgba(168, 85, 247, 0.6); /* Borda roxa sutil ao focar */
+}
+
+.search-box input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 0.95rem;
+  color: #f8fafc;
+}
+
+.search-box input::placeholder {
+  color: #94a3b8;
+}
+
+.search-box button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #cbd5e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.search-box button:hover {
+  transform: scale(1.1);
+  color: #a855f7; /* Ícone fica roxo ao passar o mouse */
+}
+
+/* Seção de Informações do Clima */
+.weather-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.location h2 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #f1f5f9;
+  letter-spacing: -0.01em;
+}
+
+/* Ícone Animado com Brilho (Glow) */
+.icon-container {
+  margin: 24px 0;
+  color: #c084fc; /* Roxo vibrante elegante */
+}
+
+.app-container.rainy .icon-container {
+  color: #38bdf8; /* Azul claro brilhante para chuva */
+}
+
+.app-container.cloudy .icon-container {
+  color: #94a3b8; /* Prateado para nuvens */
+}
+
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(2deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.floatingIcon {
+  animation: float 4s ease-in-out infinite;
+  /* Cria um efeito de luz suave atrás do ícone */
+  filter: drop-shadow(0 0 16px rgba(168, 85, 247, 0.4));
+}
+
+.app-container.rainy .floatingIcon {
+  filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.4));
+}
+
+/* Temperatura e Descrição */
+.temp-section {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.temperature {
+  font-size: 4.8rem;
+  font-weight: 200; /* Tipografia ultra-fina minimalista */
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+}
+
+.condition {
+  font-size: 0.95rem;
+  color: #cbd5e1;
+  margin-top: 10px;
+  text-transform: capitalize;
+  font-weight: 400;
+}
+
+/* Detalhes (Umidade e Vento) */
+.details {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: #cbd5e1;
+  font-weight: 400;
+}
+
+.detail-item svg {
+  color: #a855f7; /* Detalhes em roxo */
+}
+
+.app-container.rainy .detail-item svg {
+  color: #38bdf8; /* Detalhes em azul se for chuva */
+}
+
+/* Texto Inicial de Placeholder */
+.placeholder-text {
+  padding: 40px 0;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
