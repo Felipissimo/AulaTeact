@@ -61,36 +61,37 @@ function App() {
       //AULA 29/09
       //Enviando dados do React para uma API própria utilizando o método Post
 
-      //Faz a requisição para a API de histórico criada por você
-      await fetch ("http://localhost:3000/historico"),{
+      // Faz uma requisição para a API de histórico criada pelos alunos
+  await fetch("http://localhost:3000/historico", {
 
-        //Define o método HTTP utilizado
-        method: "POST", 
+  // Define o método HTTP utilizado
+  method: "POST",
 
-        //Informa que os daods enviados estarão em formato JSON
-        headers: {
-          "Content-Type": "application/json"
+  // Informa que os dados enviados estarão no formato JSON
+  headers: {
+    "Content-Type": "application/json"
+  },
 
-        },
+  // Converte o objeto JavaScript para JSON
+  body: JSON.stringify({
 
-        //Converte o objeto JavaScript para JSON
-        body: JSON.stringify({
+    // Envia o nome da cidade consultada
+    cidade: dados.name,
 
-          //Envia o nome da cidade consultada
-          cidade: cidade,
 
-          //Envia a temperatura retornada pela API OpenWeatherMap
-          temperatura: dados.main.temp + "°C",
+    // Envia a temperatura retornada pela API OpenWeatherMap
+    temperatura: dados.main.temp + "°C",
 
-          clima: dados.weather[0].description,
+    // Envia a descrição do clima
+    clima: dados.weather[0].description,
 
-          umidade: dados.main.humidity + "%",
+    // Envia a umidade do ar
+    umidade: dados.main.humidity + "%",
 
-          vento: Math.round(dados.wind.speed * 3.6)
-        })
+    vento: Math.round(dados.wind.speed * 3.6) + " km/h"  
+  })
 
-      });
-
+});
       //Fim da primeira aula
 
     } catch (erro) {
